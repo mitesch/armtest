@@ -33,4 +33,5 @@ jobs:
           cargo check --no-default-features --features "bundled"
 
       - name: dmesg
+        if: always()
         run: sudo dmesg -H
