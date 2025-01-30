@@ -17,6 +17,21 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    continue-on-error: true
+    strategy:
+      matrix:
+        python-version:
+        - 3.8
+        - 3.9
+        - >-
+          3.10
+        - 3.11
+        - 3.12
+        - 3.13
+        os:
+        - ubuntu-24.04
+        - ubuntu-24.04-arm
+      fail-fast: false  
     # The type of runner that the job will run on
     runs-on: ubuntu-24.04-arm
 
@@ -34,4 +49,4 @@ jobs:
 
       - name: dmesg
         if: always()
-        run: sudo dmesg -H
+        run: sudo dmesg -HT
