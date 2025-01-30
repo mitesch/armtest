@@ -23,17 +23,16 @@ jobs:
         python-version:
         - 3.8
         - 3.9
-        - >-
-          3.10
+        - 3.10
         - 3.11
         - 3.12
         - 3.13
         os:
-        - ubuntu-24.04
+        - ubuntu-22.04-arm
         - ubuntu-24.04-arm
       fail-fast: false  
     # The type of runner that the job will run on
-    runs-on: ubuntu-24.04-arm
+    runs-on: ${{ matrix.os }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -66,5 +65,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: logs
+          name: logs-${{ matrix.os }}-${{ matrix.version }}
           path: /var/log/ # or path/to/artifact
