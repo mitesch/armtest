@@ -51,4 +51,4 @@ jobs:
         if: always()
         run: | 
           sudo dmesg -HT > a.txt
-          more a.txt
+          cat a.txt
