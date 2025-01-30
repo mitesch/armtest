@@ -49,4 +49,6 @@ jobs:
 
       - name: dmesg
         if: always()
-        run: sudo dmesg -HT
+        run: | 
+          sudo dmesg -HT > a.txt
+          more a.txt
