@@ -38,7 +38,12 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: vm info
-        run: curl -s -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2021-02-01" | jq      
+        run: curl -s -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2021-02-01" | jq   
+      - name: dmesg
+        if: always()
+        run: | 
+          sudo dmesg -HT > a.txt
+          cat a.txt
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: stress
         run: |
