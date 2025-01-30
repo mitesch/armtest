@@ -47,7 +47,7 @@ jobs:
       - name: stress
         run: |
           sudo apt install stress s-tui
-          stress --timeout 60 --vm 4 --vm-bytes 6G
+          stress --timeout 60 --vm 4 --vm-bytes 2G
       - name: Test
         run: |
           git clone https://github.com/sgrif/pq-sys
