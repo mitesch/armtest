@@ -40,6 +40,10 @@ jobs:
       - name: vm info
         run: curl -s -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2021-02-01" | jq      
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: stress
+        run: |
+          sudo apt install stress s-tui
+          stress –cpu 4 –timeout 60
       - name: Test
         run: |
           git clone https://github.com/sgrif/pq-sys
